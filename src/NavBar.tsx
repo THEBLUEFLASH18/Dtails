@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import logo from './assets/Logo_White.jpeg';
+import logo from './assets/White-Logo-nav.webp';
 import './NavBar.css';
 
 function NavBar() {
@@ -15,6 +15,7 @@ function NavBar() {
     <nav className="navbar">
       <div className='logo-container'>
         <img src={logo} alt="Logo" className="logo"/>
+        <h1>Dtails</h1>
       </div>
       <div className="nav-buttons">
         <button className='NavButton' onClick={() => setLanguage(language === 'EN' ? 'ES' : 'EN')}>{language}</button>
