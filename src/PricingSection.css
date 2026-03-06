@@ -1,0 +1,264 @@
+/* ================================================
+   PRICING SECTION — Dtails
+   ================================================ */
+
+@keyframes pricing-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer-sweep {
+  0%        { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(350%); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(0, 115, 207, 0.4), 0 0 32px rgba(0, 115, 207, 0.12); }
+  50%       { box-shadow: 0 0 0 1px rgba(0, 115, 207, 0.7), 0 0 48px rgba(0, 115, 207, 0.22); }
+}
+
+.pricing-section {
+  padding: 100px 24px;
+  max-width: 1140px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ---- Header ---- */
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.pricing-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #f0f0f0;
+  margin: 0 0 10px 0;
+  line-height: 1;
+}
+
+.pricing-sub {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+/* ---- Grid ---- */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+/* ---- Card ---- */
+
+.pricing-card {
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: pricing-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.3s;
+}
+
+.pricing-card:nth-child(1) { animation-delay: 0.05s; }
+.pricing-card:nth-child(2) { animation-delay: 0.15s; }
+.pricing-card:nth-child(3) { animation-delay: 0.25s; }
+
+.pricing-card:hover {
+  transform: translateY(-3px);
+}
+
+.pricing-card--featured {
+  background: linear-gradient(160deg, #07152a 0%, #0d0d0d 60%);
+  animation: pricing-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards,
+             glow-pulse 3.5s ease-in-out 0.9s infinite;
+  z-index: 1;
+  margin-top: -10px; /* slightly elevated */
+}
+
+.pricing-card--featured:hover {
+  transform: translateY(-5px);
+}
+
+/* Shimmer for featured */
+.shimmer-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 62%
+  );
+  pointer-events: none;
+  animation: shimmer-sweep 5s ease-in-out infinite 1s;
+}
+
+/* Popular badge above card */
+.pricing-popular-wrap {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.pricing-popular {
+  display: inline-block;
+  background: #0073CF;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.pricing-card-inner {
+  padding: 36px 28px 28px;
+}
+
+.pricing-card--featured .pricing-card-inner {
+  padding-top: 44px;
+}
+
+/* ---- Tier info ---- */
+
+.pricing-tier-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e8e8e8;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.02em;
+}
+
+.pricing-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  color: #f5f5f5;
+  letter-spacing: -0.01em;
+  margin: 8px 0;
+}
+
+.pricing-tier-desc {
+  font-size: 12px;
+  color: #555;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+/* ---- Features ---- */
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pricing-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+.pricing-check {
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 115, 207, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0073CF;
+  flex-shrink: 0;
+}
+
+/* ---- Book button ---- */
+
+.pricing-btn {
+  width: 100%;
+  height: 48px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: #aaa;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.pricing-btn:hover {
+  color: #f0f0f0;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+}
+
+.pricing-btn--featured {
+  background: #0073CF;
+  border-color: transparent;
+  color: #fff;
+}
+
+.pricing-btn--featured:hover {
+  background: #0088f0;
+  border-color: transparent;
+  box-shadow: 0 8px 28px rgba(0, 115, 207, 0.5);
+  color: #fff;
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+
+@media (max-width: 1099px) {
+  .pricing-title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pricing-section {
+    padding: 72px 16px;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .pricing-card--featured {
+    margin-top: 0;
+  }
+  .pricing-popular-wrap {
+    top: -13px;
+  }
+  .pricing-title {
+    font-size: 42px;
+  }
+}
