@@ -38,7 +38,9 @@ function FAQSection({ language }: { language: Lang }) {
   const l = language;
   const [open, setOpen] = useState<number | null>(0);
 
+
   return (
+    <div className="faq-wrapper">
     <section className="faq-section">
       <div className="faq-header">
         <h2 className="faq-title">{content.title[l]}</h2>
@@ -72,6 +74,7 @@ function FAQSection({ language }: { language: Lang }) {
         })}
       </div>
     </section>
+    </div>
   );
 }
 

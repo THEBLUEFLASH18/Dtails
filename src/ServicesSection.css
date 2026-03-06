@@ -13,6 +13,13 @@
   100% { top: 100%; opacity: 0; }
 }
 
+.svc-wrapper {
+  width: 100%;
+  background: rgba(7, 7, 7, 0.91);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .svc-section {
   padding: 100px 24px;
   max-width: 1140px;

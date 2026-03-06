@@ -61,6 +61,7 @@ const content = {
 function PricingSection({ language }: { language: Lang }) {
   const l = language;
   return (
+    <div className="pricing-wrapper">
     <section className="pricing-section">
       <div className="pricing-header">
         <h2 className="pricing-title">{content.title[l]}</h2>
@@ -100,6 +101,7 @@ function PricingSection({ language }: { language: Lang }) {
         ))}
       </div>
     </section>
+    </div>
   );
 }
 

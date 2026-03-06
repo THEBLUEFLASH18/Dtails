@@ -91,6 +91,7 @@ const content = {
 function ServicesSection({ language }: { language: Lang }) {
   const l = language;
   return (
+    <div className="svc-wrapper">
     <section className="svc-section">
       <div className="svc-header">
         <span className="svc-eyebrow">
@@ -125,6 +126,7 @@ function ServicesSection({ language }: { language: Lang }) {
         ))}
       </div>
     </section>
+    </div>
   );
 }
 

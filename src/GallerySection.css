@@ -7,11 +7,18 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
+.gallery-wrapper {
+  width: 100%;
+  /* Slightly lighter than other sections — lets the dark photo grid pop against it */
+  background: rgba(10, 10, 10, 0.88);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .gallery-section {
   padding: 100px 24px;
   max-width: 1140px;
   margin: 0 auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 /* ---- Header ---- */

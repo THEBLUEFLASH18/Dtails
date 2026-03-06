@@ -59,28 +59,30 @@ const content = {
 function HowItWorks({ language }: { language: Lang }) {
   const l = language;
   return (
-    <section className="hiw-section">
-      <div className="hiw-header">
-        <h2 className="hiw-title">{content.title[l]}</h2>
-        <p className="hiw-sub">{content.sub[l]}</p>
-      </div>
+    <div className="hiw-wrapper">
+      <section className="hiw-section">
+        <div className="hiw-header">
+          <h2 className="hiw-title">{content.title[l]}</h2>
+          <p className="hiw-sub">{content.sub[l]}</p>
+        </div>
 
-      <div className="hiw-track">
-        <div className="hiw-line"></div>
-        {content.steps.map((step, i) => (
-          <div key={i} className="hiw-step">
-            <div className="hiw-node">
-              <span className="hiw-num">{step.num}</span>
-              <div className="hiw-icon-ring">
-                <div className="hiw-icon">{step.icon}</div>
+        <div className="hiw-track">
+          <div className="hiw-line"></div>
+          {content.steps.map((step, i) => (
+            <div key={i} className="hiw-step">
+              <div className="hiw-node">
+                <span className="hiw-num">{step.num}</span>
+                <div className="hiw-icon-ring">
+                  <div className="hiw-icon">{step.icon}</div>
+                </div>
               </div>
+              <h3 className="hiw-step-title">{step.title[l]}</h3>
+              <p className="hiw-step-desc">{step.desc[l]}</p>
             </div>
-            <h3 className="hiw-step-title">{step.title[l]}</h3>
-            <p className="hiw-step-desc">{step.desc[l]}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }
 

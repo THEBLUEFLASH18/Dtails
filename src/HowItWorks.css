@@ -3,16 +3,28 @@
    ================================================ */
 
 @keyframes hiw-enter {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hiw-wrapper {
+  width: 100%;
+  background: rgba(7, 7, 7, 0.88);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .hiw-section {
   padding: 100px 24px;
   max-width: 1140px;
   margin: 0 auto;
-  /* Subtle section separator at top */
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 /* ---- Header ---- */
@@ -34,7 +46,7 @@
 
 .hiw-sub {
   font-size: 14px;
-  color: #555;
+  color: white;
   margin: 0;
   letter-spacing: 0.02em;
 }
@@ -51,17 +63,16 @@
 /* Horizontal connecting line */
 .hiw-line {
   position: absolute;
-  top: 38px; /* vertically centered on the icon rings */
+  top: 38px;
+  /* vertically centered on the icon rings */
   left: calc(12.5% + 32px);
   right: calc(12.5% + 32px);
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 115, 207, 0.15) 0%,
-    rgba(0, 115, 207, 0.5) 30%,
-    rgba(0, 115, 207, 0.5) 70%,
-    rgba(0, 115, 207, 0.15) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(0, 115, 207, 0.15) 0%,
+      rgba(0, 115, 207, 0.5) 30%,
+      rgba(0, 115, 207, 0.5) 70%,
+      rgba(0, 115, 207, 0.15) 100%);
   pointer-events: none;
 }
 
@@ -76,10 +87,21 @@
   animation: hiw-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hiw-step:nth-child(2) { animation-delay: 0.05s; }
-.hiw-step:nth-child(3) { animation-delay: 0.15s; }
-.hiw-step:nth-child(4) { animation-delay: 0.25s; }
-.hiw-step:nth-child(5) { animation-delay: 0.35s; }
+.hiw-step:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.hiw-step:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.hiw-step:nth-child(4) {
+  animation-delay: 0.25s;
+}
+
+.hiw-step:nth-child(5) {
+  animation-delay: 0.35s;
+}
 
 /* ---- Node (number + ring + icon) ---- */
 
@@ -165,6 +187,7 @@
   .hiw-title {
     font-size: 48px;
   }
+
   .hiw-line {
     display: none;
   }
@@ -174,16 +197,20 @@
   .hiw-section {
     padding: 72px 16px;
   }
+
   .hiw-track {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
+
   .hiw-line {
     display: none;
   }
+
   .hiw-title {
     font-size: 42px;
   }
+
   .hiw-header {
     margin-bottom: 48px;
   }

@@ -23,6 +23,7 @@ const content = {
 function GallerySection({ language }: { language: Lang }) {
   const l = language;
   return (
+    <div className="gallery-wrapper">
     <section className="gallery-section">
       <div className="gallery-header">
         <h2 className="gallery-title">{content.title[l]}</h2>
@@ -53,6 +54,7 @@ function GallerySection({ language }: { language: Lang }) {
         </button>
       </div>
     </section>
+    </div>
   );
 }
 

@@ -45,6 +45,7 @@ const content = {
 function TestimonialsSection({ language }: { language: Lang }) {
   const l = language;
   return (
+    <div className="testi-wrapper">
     <section className="testi-section">
       <div className="testi-header">
         <h2 className="testi-title">{content.title[l]}</h2>
@@ -72,6 +73,7 @@ function TestimonialsSection({ language }: { language: Lang }) {
         ))}
       </div>
     </section>
+    </div>
   );
 }
 

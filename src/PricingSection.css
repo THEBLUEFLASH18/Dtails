@@ -17,11 +17,18 @@
   50%       { box-shadow: 0 0 0 1px rgba(0, 115, 207, 0.7), 0 0 48px rgba(0, 115, 207, 0.22); }
 }
 
+.pricing-wrapper {
+  width: 100%;
+  /* Deep blue-black tint — reinforces the premium/vault feel of pricing */
+  background: linear-gradient(180deg, rgba(4, 8, 20, 0.95) 0%, rgba(7, 7, 7, 0.93) 100%);
+  border-top: 1px solid rgba(0, 115, 207, 0.12);
+  border-bottom: 1px solid rgba(0, 115, 207, 0.12);
+}
+
 .pricing-section {
   padding: 100px 24px;
   max-width: 1140px;
   margin: 0 auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 /* ---- Header ---- */
