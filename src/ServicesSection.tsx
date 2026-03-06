@@ -1,10 +1,11 @@
+import type { ReactElement } from 'react';
 import './ServicesSection.css';
 
 type Lang = 'EN' | 'ES';
 
 type IconKey = 'car' | 'sparkle' | 'tool' | 'shield' | 'bolt' | 'drop';
 
-const ICONS: Record<IconKey, JSX.Element> = {
+const ICONS: Record<IconKey, ReactElement> = {
   car: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M5 17H3a2 2 0 0 1-2-2V9l3-6h12l3 6v6a2 2 0 0 1-2 2h-2"/>
