@@ -99,9 +99,7 @@
   animation-delay: 0.25s;
 }
 
-.hiw-step:nth-child(5) {
-  animation-delay: 0.35s;
-}
+
 
 /* ---- Node (number + ring + icon) ---- */
 
@@ -201,10 +199,6 @@
   .hiw-track {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-  }
-
-  .hiw-line {
-    display: none;
   }
 
   .hiw-title {

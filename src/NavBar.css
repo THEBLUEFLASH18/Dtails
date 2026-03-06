@@ -13,12 +13,12 @@
     z-index: 100;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 0 32px;
-    box-sizing: border-box;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
+    flex: 1;
 }
 
 img.logo {
@@ -54,6 +54,8 @@ img.logo {
     display: flex;
     gap: 10px;
     align-items: center;
+    flex: 1;
+    justify-content: flex-end;
 }
 
 .lang-toggle {
