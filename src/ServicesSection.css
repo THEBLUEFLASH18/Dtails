@@ -15,7 +15,7 @@
 
 .svc-wrapper {
   width: 100%;
-  background: rgba(7, 7, 7, 0.91);
+  background: #000000;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -90,7 +90,7 @@
 /* ---- Card ---- */
 
 .svc-card {
-  background: #0f0f0f;
+  background: #080808;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 14px;
   padding: 28px;
@@ -115,7 +115,7 @@
 }
 
 .svc-card--featured {
-  background: linear-gradient(145deg, #08162b 0%, #0d0d0d 70%);
+  background: linear-gradient(145deg, #050f1e 0%, #060606 70%);
   border-color: rgba(0, 115, 207, 0.35);
 }
 

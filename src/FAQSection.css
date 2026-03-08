@@ -59,7 +59,7 @@
 /* ---- Item ---- */
 
 .faq-item {
-  background: #0f0f0f;
+  background: #080808;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 14px;
   overflow: hidden;
@@ -81,7 +81,7 @@
 
 .faq-item--open {
   border-color: rgba(0, 115, 207, 0.35);
-  background: linear-gradient(145deg, #08162b 0%, #0d0d0d 60%);
+  background: linear-gradient(145deg, #050f1e 0%, #060606 60%);
 }
 
 .faq-item--open:hover {
