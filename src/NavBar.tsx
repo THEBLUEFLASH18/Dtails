@@ -19,7 +19,7 @@ function NavBar({ language, setLanguage }: NavBarProps) {
     return (
         <nav className="navbar">
             <div className='logo-container'>
-                <img src={logo} alt="Dtails" className="logo" />
+                <img src={logo} alt="Dtailz" className="logo" />
             </div>
             <div className="nav-links">
                 <a href="#" className="nav-link">{nav.about[language]}</a>

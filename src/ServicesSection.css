@@ -219,6 +219,16 @@
   letter-spacing: 0.02em;
 }
 
+.svc-duration {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 0.02em;
+}
+
 /* ================================================
    RESPONSIVE
    ================================================ */

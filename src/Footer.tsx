@@ -5,7 +5,7 @@ import './Footer.css';
 type Lang = 'EN' | 'ES';
 
 const content = {
-  tagline:    { EN: 'Obsessive precision. Showroom results.\nPanama City\'s premier detailing service.',       ES: 'Precisión obsesiva. Resultados de showroom.\nEl servicio de detallado premium de Ciudad de Panamá.' },
+  tagline:    { EN: 'Obsessive precision. Showroom results.\nSan Pedro Sula\'s premier detailing service.',    ES: 'Precisión obsesiva. Resultados de showroom.\nEl servicio de detallado premium de San Pedro Sula.' },
   servicesH:  { EN: 'Services',         ES: 'Servicios' },
   contactH:   { EN: 'Contact',          ES: 'Contacto' },
   subscribeH: { EN: 'Stay in the Loop', ES: 'Mantente Informado' },
@@ -13,15 +13,15 @@ const content = {
   emailPlh:   { EN: 'Email address',    ES: 'Correo electrónico' },
   subscribeB: { EN: 'Subscribe',        ES: 'Suscribirse' },
   links: [
-    { EN: 'Exterior Detail',   ES: 'Detallado Exterior' },
-    { EN: 'Interior Detail',   ES: 'Detallado Interior' },
-    { EN: 'Paint Correction',  ES: 'Corrección de Pintura' },
-    { EN: 'Ceramic Coating',   ES: 'Recubrimiento Cerámico' },
-    { EN: 'Engine Bay Detail', ES: 'Detallado de Motor' },
+    { EN: 'Basic Detail (Compact)',    ES: 'Detallado Básico (Compacto)' },
+    { EN: 'Basic Detail (Mid-size)',   ES: 'Detallado Básico (Mediano)' },
+    { EN: 'Basic Detail (XL)',         ES: 'Detallado Básico (XL)' },
+    { EN: 'Paint Wax (Turtle Wax)',    ES: 'Cera para Pintura (Turtle Wax)' },
+    { EN: 'Engine Decontamination',    ES: 'Descontaminación de Motor' },
   ],
   privacy:    { EN: 'Privacy Policy',    ES: 'Política de Privacidad' },
   terms:      { EN: 'Terms of Service',  ES: 'Términos de Servicio' },
-  copy:       { EN: '© 2025 Dtails. All rights reserved.', ES: '© 2025 Dtails. Todos los derechos reservados.' },
+  copy:       { EN: '© 2025 Dtailz. All rights reserved.', ES: '© 2025 Dtailz. Todos los derechos reservados.' },
 };
 
 function Footer({ language }: { language: Lang }) {
@@ -35,7 +35,7 @@ function Footer({ language }: { language: Lang }) {
       <div className="footer-body">
         {/* Col 1 — Brand */}
         <div className="footer-brand">
-          <img src={logo} alt="Dtails" className="footer-logo" />
+          <img src={logo} alt="Dtailz" className="footer-logo" />
           <p className="footer-tagline">{content.tagline[l]}</p>
           <div className="footer-socials">
             {/* Instagram */}
@@ -99,7 +99,7 @@ function Footer({ language }: { language: Lang }) {
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
               </span>
-              Panama City, Panama
+              San Pedro Sula, Honduras
             </li>
           </ul>
         </div>

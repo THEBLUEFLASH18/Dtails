@@ -49,41 +49,40 @@ const content = {
   startingAt: { EN: 'Starting at',                                             ES: 'Desde' },
   items: [
     {
-      icon:  'car' as IconKey,
-      name:  { EN: 'Exterior Detail',    ES: 'Detallado Exterior' },
-      desc:  { EN: 'Deep clean, clay bar, and sealant application for lasting shine.',             ES: 'Limpieza profunda, clay bar y sellador para un brillo duradero.' },
-      price: '$149',
-    },
-    {
-      icon:     'sparkle' as IconKey,
-      name:     { EN: 'Interior Detail',   ES: 'Detallado Interior' },
-      desc:     { EN: 'Steam cleaning, leather conditioning, and carpet extraction.',              ES: 'Limpieza a vapor, acondicionamiento de cuero y extracción de alfombras.' },
-      price:    '$199',
+      icon:     'car' as IconKey,
+      name:     { EN: 'Basic Interior & Exterior Detail (Compact Vehicle)',    ES: 'Detallado Interior y Exterior Básico (Vehículo Compacto)' },
+      desc:     { EN: 'Give your compact car the care it deserves with a thorough interior and exterior basic detail.', ES: 'Dale a tu auto compacto el cuidado que merece con un detallado básico completo interior y exterior.' },
+      price:    'L 250',
+      duration: { EN: '2 hours 30 minutes', ES: '2 horas 30 minutos' },
       featured: true,
     },
     {
-      icon:  'tool' as IconKey,
-      name:  { EN: 'Paint Correction',   ES: 'Corrección de Pintura' },
-      desc:  { EN: 'Removal of swirls, scratches, and oxidation for a mirror finish.',            ES: 'Eliminación de remolinos, rayones y oxidación para acabado espejo.' },
-      price: '$399',
+      icon:  'sparkle' as IconKey,
+      name:  { EN: 'Basic Interior & Exterior Detail (Mid-size Vehicle)',      ES: 'Detallado Interior y Exterior Básico (Vehículo Mediano)' },
+      desc:  { EN: 'Give your mid-size vehicle the care it deserves with a thorough interior and exterior basic detail.', ES: 'Dale a tu vehículo mediano el cuidado que merece con un detallado básico completo interior y exterior.' },
+      price: 'L 300',
+      duration: { EN: '3 hours', ES: '3 horas' },
+    },
+    {
+      icon:  'car' as IconKey,
+      name:  { EN: 'Basic Interior & Exterior Detail (XL Vehicle)',            ES: 'Detallado Interior y Exterior Básico (Vehículo XL)' },
+      desc:  { EN: 'Give your XL vehicle the care it deserves with a thorough interior and exterior basic detail.', ES: 'Dale a tu vehículo XL el cuidado que merece con un detallado básico completo interior y exterior.' },
+      price: 'L 350',
+      duration: { EN: '3 hours 30 minutes', ES: '3 horas 30 minutos' },
     },
     {
       icon:  'shield' as IconKey,
-      name:  { EN: 'Ceramic Coating',    ES: 'Recubrimiento Cerámico' },
-      desc:  { EN: 'Long-term protection against UV, chemicals, and water spots.',                ES: 'Protección a largo plazo contra UV, químicos y manchas de agua.' },
-      price: '$899',
+      name:  { EN: 'Paint Wax Treatment (Turtle Wax)',                         ES: 'Tratamiento de Cera para Pintura (Turtle Wax)' },
+      desc:  { EN: 'Protect and enhance the shine of your car with our professional Turtle Wax paint wax treatment.', ES: 'Protege y resalta el brillo de tu auto con nuestro tratamiento de cera Turtle Wax para pintura.' },
+      price: { EN: 'Variable price', ES: 'Precio variable' } as unknown as string,
+      duration: { EN: '2 hours', ES: '2 horas' },
     },
     {
       icon:  'bolt' as IconKey,
-      name:  { EN: 'Engine Bay Detail',  ES: 'Detallado de Motor' },
-      desc:  { EN: 'Safe degreasing and dressing of all engine components.',                      ES: 'Desengrasado seguro y acondicionamiento de todos los componentes del motor.' },
-      price: '$89',
-    },
-    {
-      icon:  'drop' as IconKey,
-      name:  { EN: 'Full Restoration',   ES: 'Restauración Completa' },
-      desc:  { EN: 'Complete interior and exterior overhaul for the ultimate reset.',             ES: 'Renovación completa interior y exterior para el reinicio definitivo.' },
-      price: '$299',
+      name:  { EN: 'Engine Decontamination',                                   ES: 'Descontaminación de Motor' },
+      desc:  { EN: 'Keep the heart of your car in perfect condition with our professional engine decontamination service.', ES: 'Mantén el corazón de tu auto en perfectas condiciones con nuestro servicio de descontaminación de motor.' },
+      price: 'L 400',
+      duration: { EN: '2 hours', ES: '2 horas' },
     },
   ],
 };
@@ -119,7 +118,15 @@ function ServicesSection({ language }: { language: Lang }) {
             <p className="svc-desc">{item.desc[l]}</p>
             <div className="svc-price">
               <span className="svc-starting">{content.startingAt[l]}</span>
-              <strong className="svc-amount">{item.price}</strong>
+              <strong className="svc-amount">
+                {typeof item.price === 'object' ? (item.price as { EN: string; ES: string })[l] : item.price}
+              </strong>
+            </div>
+            <div className="svc-duration">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              {item.duration[l]}
             </div>
             <div className="svc-scan"></div>
           </div>

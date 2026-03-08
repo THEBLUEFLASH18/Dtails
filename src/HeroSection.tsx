@@ -39,7 +39,7 @@ function HeroSection({ language }: { language: Lang }) {
           {t.badge[l]}
         </span>
         <h1 className="hero-headline">
-          {t.headline[l][0]}<br />{t.headline[l][1]}<br /><span className="accent">Dtails.</span>
+          {t.headline[l][0]}<br />{t.headline[l][1]}<br /><span className="accent">Dtailz.</span>
         </h1>
         <p className="hero-desc">{t.desc[l]}</p>
         <div className="button-group">
@@ -57,7 +57,7 @@ function HeroSection({ language }: { language: Lang }) {
           <span className="stat-tag">{t.statTag[l]}</span>
           <span className="stat-mega">500<span className="stat-plus">+</span></span>
           <div className="stat-divider"></div>
-          <span className="stat-sub">Est. 2019 · Panama City</span>
+          <span className="stat-sub">Est. 2019 · San Pedro Sula</span>
         </div>
       </div>
 
