@@ -84,13 +84,20 @@ const content = {
       price: 'L 400',
       duration: { EN: '2 hours', ES: '2 horas' },
     },
+    {
+      icon:  'drop' as IconKey,
+      name:  { EN: 'Upholstery Purification',                                  ES: 'Purificación de Tapicería' },
+      desc:  { EN: 'Restore freshness to your car with our deep upholstery purification treatment.', ES: 'Devuélvele la frescura a tu auto con nuestro tratamiento profundo de purificación de tapicería.' },
+      price: { EN: 'Variable price', ES: 'Precio variable' } as unknown as string,
+      duration: { EN: '8 hours', ES: '8 horas' },
+    },
   ],
 };
 
 function ServicesSection({ language }: { language: Lang }) {
   const l = language;
   return (
-    <div className="svc-wrapper">
+    <div className="svc-wrapper" id="services">
     <section className="svc-section">
       <div className="svc-header">
         <span className="svc-eyebrow">

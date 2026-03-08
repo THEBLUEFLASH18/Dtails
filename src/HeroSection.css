@@ -226,6 +226,9 @@
   height: 44px;
   padding: 0 28px;
   background: #0073CF;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
   border: none;
   border-radius: 10px;
   color: #fff;
@@ -503,6 +506,7 @@
   height: 50px;
   padding: 0 26px;
   background: #1a8c3a;
+  text-decoration: none;
   border: none;
   border-radius: 10px;
   color: #fff;

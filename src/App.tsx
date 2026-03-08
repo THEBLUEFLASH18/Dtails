@@ -4,7 +4,6 @@ import NavBar from './NavBar'
 import HeroSection from './HeroSection'
 import ServicesSection from './ServicesSection'
 import HowItWorks from './HowItWorks'
-import PricingSection from './PricingSection'
 import GallerySection from './GallerySection'
 import TestimonialsSection from './TestimonialsSection'
 import FAQSection from './FAQSection'
@@ -84,7 +83,6 @@ function App() {
       <HeroSection language={language} />
       <ServicesSection language={language} />
       <HowItWorks language={language} />
-      <PricingSection language={language} />
       <GallerySection language={language} />
       <TestimonialsSection language={language} />
       <FAQSection language={language} />
