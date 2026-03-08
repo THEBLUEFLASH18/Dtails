@@ -26,6 +26,16 @@
   50%       { opacity: 0.8; box-shadow: 0 0 0 5px rgba(0, 115, 207, 0); }
 }
 
+@keyframes chrome-sweep {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes brand-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 18px rgba(0, 115, 207, 0.22)) drop-shadow(0 2px 40px rgba(0, 115, 207, 0.08)); }
+  50%       { filter: drop-shadow(0 0 32px rgba(0, 115, 207, 0.42)) drop-shadow(0 2px 60px rgba(0, 115, 207, 0.18)); }
+}
+
 @keyframes btn-glow {
   0%, 100% { box-shadow: 0 0 14px rgba(0, 115, 207, 0.35); }
   50%       { box-shadow: 0 0 32px rgba(0, 115, 207, 0.65), 0 0 60px rgba(0, 115, 207, 0.2); }
@@ -98,7 +108,9 @@
 /* ---------- BOX 1 — Main CTA ---------- */
 
 .box-1 {
-  background: linear-gradient(145deg, #0d0d0d 0%, #0a1220 100%);
+  background:
+    radial-gradient(ellipse 70% 50% at 5% 95%, rgba(0, 115, 207, 0.09) 0%, transparent 65%),
+    linear-gradient(145deg, #0d0d0d 0%, #0a1220 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,19 +144,67 @@
 }
 
 .hero-headline {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 64px;
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: 0.01em;
   margin: 0 0 12px 0;
-  color: #f5f5f5;
+  line-height: 1;
 }
 
-.hero-headline .accent {
-  color: #0073CF;
-  display: inline-block;
-  position: relative;
+/* "Brilla" + "con" row */
+.hl-top {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: -4px;
+}
+
+.hl-brilla {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 68px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  color: #d8d8d8;
+}
+
+.hl-con {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.18em;
+  color: #3a3a3a;
+  text-transform: lowercase;
+  padding-bottom: 10px;
+  flex-shrink: 0;
+}
+
+/* "Dtailz." — chrome metallic sweep */
+.hl-brand {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(88px, 9.5vw, 124px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 0.88;
+  background: linear-gradient(
+    105deg,
+    #4a7a9e 0%,
+    #8ab8d8 12%,
+    #cce4f5 24%,
+    #ffffff 32%,
+    #e8f4ff 40%,
+    #b0d0e8 52%,
+    #ffffff 62%,
+    #d0e8f8 74%,
+    #6a9ab8 88%,
+    #4a7a9e 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation:
+    chrome-sweep 3.8s linear infinite,
+    brand-glow-pulse 4s ease-in-out infinite;
 }
 
 .hero-desc {
@@ -534,7 +594,7 @@
     padding: 14px;
   }
 
-  .hero-headline {
+  .hl-brilla {
     font-size: 72px;
   }
 
@@ -575,9 +635,13 @@
     padding: 24px 20px;
   }
 
-  .hero-headline {
-    font-size: 58px;
-    margin-bottom: 10px;
+  .hl-brilla {
+    font-size: 52px;
+  }
+
+  .hl-con {
+    font-size: 13px;
+    padding-bottom: 8px;
   }
 
   .hero-desc {

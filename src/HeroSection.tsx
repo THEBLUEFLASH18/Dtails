@@ -39,7 +39,11 @@ function HeroSection({ language }: { language: Lang }) {
           {t.badge[l]}
         </span>
         <h1 className="hero-headline">
-          {t.headline[l][0]}<br />{t.headline[l][1]}<br /><span className="accent">Dtailz.</span>
+          <span className="hl-top">
+            <span className="hl-brilla">{t.headline[l][0]}</span>
+            <span className="hl-con">{t.headline[l][1]}</span>
+          </span>
+          <span className="hl-brand">Dtailz.</span>
         </h1>
         <p className="hero-desc">{t.desc[l]}</p>
         <div className="button-group">
