@@ -1,30 +1,6 @@
 /* ================================================
-   HERO SECTION — Dtails Automotive Detailing
-   Dark Luxury · Industrial Precision Aesthetic
+   HERO SECTION — Dtailz
    ================================================ */
-
-/* ---------- Animations ---------- */
-
-@keyframes box-enter {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes shimmer-sweep {
-  0%   { transform: translateX(-100%); }
-  50%, 100% { transform: translateX(350%); }
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 115, 207, 0.6); }
-  50%       { opacity: 0.8; box-shadow: 0 0 0 5px rgba(0, 115, 207, 0); }
-}
 
 @keyframes chrome-sweep {
   0%   { background-position: 200% center; }
@@ -32,704 +8,391 @@
 }
 
 @keyframes brand-glow-pulse {
-  0%, 100% { filter: drop-shadow(0 0 18px rgba(0, 115, 207, 0.22)) drop-shadow(0 2px 40px rgba(0, 115, 207, 0.08)); }
-  50%       { filter: drop-shadow(0 0 32px rgba(0, 115, 207, 0.42)) drop-shadow(0 2px 60px rgba(0, 115, 207, 0.18)); }
+  0%, 100% { filter: drop-shadow(0 0 18px rgba(0,115,207,0.22)); }
+  50%       { filter: drop-shadow(0 0 36px rgba(0,115,207,0.48)); }
 }
 
-@keyframes btn-glow {
-  0%, 100% { box-shadow: 0 0 14px rgba(0, 115, 207, 0.35); }
-  50%       { box-shadow: 0 0 32px rgba(0, 115, 207, 0.65), 0 0 60px rgba(0, 115, 207, 0.2); }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes scan-line {
-  0%   { top: 0%; opacity: 0.6; }
-  90%  { opacity: 0.6; }
-  100% { top: 100%; opacity: 0; }
-}
+/* ── Layout ── */
 
-/* ---------- Grid ---------- */
-
-.hero-section {
+.hero {
   display: grid;
-  gap: 10px;
-  grid-template-columns: 400px 400px 300px;
-  grid-template-rows: 400px 260px 280px;
-  grid-template-areas:
-    "box1 box1 box2"
-    "box3 box3 box4"
-    "box5 box6 box6";
-  justify-content: center;
-  padding: 16px;
+  grid-template-columns: 55% 45%;
+  min-height: 620px;
+  background: #000;
+  overflow: hidden;
 }
 
-/* ---------- Base Box ---------- */
+/* ================================================
+   LEFT — Before / After Slider
+   ================================================ */
 
-.box {
-  background: #080808;
-  border-radius: 14px;
-  color: #f0f0f0;
-  padding: 28px;
+.hero-slider {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  opacity: 0;
-  animation: box-enter 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: border-color 0.3s, transform 0.3s;
+  background: #000;
+  cursor: col-resize;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.box:hover {
-  border-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-/* Stagger entry */
-.box-1 { animation-delay: 0.05s; }
-.box-2 { animation-delay: 0.18s; }
-.box-3 { animation-delay: 0.28s; }
-.box-4 { animation-delay: 0.35s; }
-.box-5 { animation-delay: 0.42s; }
-.box-6 { animation-delay: 0.52s; }
-
-/* ---------- Corner Marks (precision viewfinder style) ---------- */
-
-.corner {
+.slider-img {
   position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: rgba(0, 115, 207, 0.5);
-  border-style: solid;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  display: block;
+}
+
+.slider-dirty-wrap {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  transition: clip-path 0.03s linear;
+}
+
+.slider-img--dirty {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
   pointer-events: none;
 }
-.corner.tl { top: 12px;  left: 12px;  border-width: 1.5px 0 0 1.5px; }
-.corner.tr { top: 12px;  right: 12px; border-width: 1.5px 1.5px 0 0; }
-.corner.br { bottom: 12px; right: 12px; border-width: 0 1.5px 1.5px 0; }
-.corner.bl { bottom: 12px; left: 12px;  border-width: 0 0 1.5px 1.5px; }
 
-/* ---------- BOX 1 — Main CTA ---------- */
+/* ── Handle ── */
 
-.box-1 {
+.slider-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  cursor: col-resize;
+}
+
+.slider-line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255,255,255,0.8) 15%,
+    #ffffff 50%,
+    rgba(255,255,255,0.8) 85%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+.slider-knob {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.15), 0 4px 24px rgba(0,0,0,0.5);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.slider-handle:hover .slider-knob,
+.slider-handle:active .slider-knob {
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 0 0 4px rgba(0,115,207,0.4), 0 6px 30px rgba(0,0,0,0.6);
+}
+
+/* ── Before / After Labels ── */
+
+.slider-label {
+  position: absolute;
+  top: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.slider-label--before {
+  left: 16px;
+  background: rgba(0,0,0,0.55);
+  color: #e8e8e8;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.slider-label--after {
+  right: 16px;
+  background: rgba(0,115,207,0.2);
+  color: #0073CF;
+  border: 1px solid rgba(0,115,207,0.3);
+}
+
+/* ── Vignette ── */
+
+.slider-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
   background:
-    radial-gradient(ellipse 70% 50% at 5% 95%, rgba(0, 115, 207, 0.09) 0%, transparent 65%),
-    linear-gradient(145deg, #050505 0%, #060d18 100%);
+    linear-gradient(to right,  rgba(0,0,0,0.55) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.55) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 14%, transparent 80%, rgba(0,0,0,0.55) 100%);
+}
+
+/* ================================================
+   RIGHT — Content
+   ================================================ */
+
+.hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 60px 52px 60px 48px;
+  background: #000;
+  border-left: 1px solid rgba(255,255,255,0.04);
+  animation: fade-up 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s both;
 }
 
-.booking-badge {
+/* ── Eyebrow ── */
+
+.hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11px;
+  gap: 10px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #0073CF;
-  background: rgba(0, 115, 207, 0.1);
-  border: 1px solid rgba(0, 115, 207, 0.28);
-  padding: 5px 14px;
-  border-radius: 100px;
-  margin-bottom: 12px;
-  width: fit-content;
+  margin-bottom: 18px;
 }
 
-.pulse-dot {
-  width: 6px;
-  height: 6px;
-  background: #0073CF;
-  border-radius: 50%;
+.hero-eyebrow-bar {
   display: inline-block;
-  animation: pulse-dot 2.2s ease infinite;
+  width: 24px;
+  height: 1px;
+  background: #0073CF;
+  box-shadow: 0 0 6px rgba(0,115,207,0.7);
   flex-shrink: 0;
 }
 
-.hero-headline {
-  margin: 0 0 12px 0;
+/* ── Headline ── */
+
+.hero-title {
+  margin: 0 0 16px 0;
   line-height: 1;
 }
 
-/* "Brilla" + "con" row */
-.hl-top {
+.ht-top {
   display: flex;
   align-items: baseline;
   gap: 14px;
-  margin-bottom: -4px;
+  margin-bottom: -2px;
 }
 
-.hl-brilla {
+.ht-brilla {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 68px;
+  font-size: clamp(52px, 5.5vw, 72px);
   font-weight: 400;
   letter-spacing: 0.03em;
-  line-height: 1;
-  color: #d8d8d8;
+  color: #d0d0d0;
 }
 
-.hl-con {
+.ht-con {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   font-style: italic;
   letter-spacing: 0.18em;
-  color: #3a3a3a;
-  text-transform: lowercase;
+  color: #333;
   padding-bottom: 10px;
   flex-shrink: 0;
 }
 
-/* "Dtailz." — chrome metallic sweep */
-.hl-brand {
+.ht-brand {
   display: block;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(88px, 9.5vw, 124px);
+  font-size: clamp(64px, 7vw, 96px);
   font-weight: 400;
   letter-spacing: 0.01em;
-  line-height: 0.88;
+  line-height: 0.9;
   background: linear-gradient(
     105deg,
-    #4a7a9e 0%,
-    #8ab8d8 12%,
-    #cce4f5 24%,
-    #ffffff 32%,
-    #e8f4ff 40%,
-    #b0d0e8 52%,
-    #ffffff 62%,
-    #d0e8f8 74%,
-    #6a9ab8 88%,
-    #4a7a9e 100%
+    #4a7a9e 0%, #8ab8d8 12%, #cce4f5 24%,
+    #ffffff 32%, #e8f4ff 40%, #b0d0e8 52%,
+    #ffffff 62%, #d0e8f8 74%, #6a9ab8 88%, #4a7a9e 100%
   );
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation:
-    chrome-sweep 3.8s linear infinite,
-    brand-glow-pulse 4s ease-in-out infinite;
+  animation: chrome-sweep 3.8s linear infinite, brand-glow-pulse 4s ease-in-out infinite;
 }
+
+/* ── Description ── */
 
 .hero-desc {
   font-size: 13px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #777;
-  margin: 0 0 16px 0;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 22px 0;
   max-width: 420px;
 }
 
-.button-group {
+/* ── Bullet List ── */
+
+.hero-bullets {
+  list-style: none;
+  margin: 0 0 28px 0;
+  padding: 0;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-bullet {
+  display: flex;
+  align-items: flex-start;
   gap: 12px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.hero-bullet-dot {
+  width: 6px;
+  height: 6px;
+  background: #0073CF;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+  box-shadow: 0 0 6px rgba(0,115,207,0.6);
+}
+
+/* ── Action Buttons ── */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.btn-primary {
-  height: 44px;
-  padding: 0 28px;
-  background: #0073CF;
-  text-decoration: none;
+.hero-btn-primary {
   display: inline-flex;
   align-items: center;
-  border: none;
-  border-radius: 10px;
+  height: 46px;
+  padding: 0 28px;
+  background: #0073CF;
   color: #fff;
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+  text-decoration: none;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.25s;
-  animation: btn-glow 3s ease infinite;
+  border-radius: 8px;
+  transition: background 0.22s, transform 0.22s, box-shadow 0.22s;
+  flex-shrink: 0;
 }
 
-.btn-primary:hover {
+.hero-btn-primary:hover {
   background: #0088f0;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0, 115, 207, 0.55);
-  animation: none;
+  box-shadow: 0 8px 28px rgba(0,115,207,0.45);
 }
 
-.btn-secondary {
-  height: 44px;
-  padding: 0 28px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.hero-btn-wa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.hero-btn-wa:hover { opacity: 0.8; }
+
+.hero-btn-wa-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(145deg, #071409, #0d1f10);
+  border: 1px solid rgba(37,211,102,0.35);
   border-radius: 10px;
-  color: #aaa;
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #25d366;
+  flex-shrink: 0;
+}
+
+.hero-btn-wa-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.hero-btn-wa-label {
+  font-size: 9px;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.25s;
-}
-
-.btn-secondary:hover {
-  color: #f0f0f0;
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.04);
-  transform: translateY(-2px);
-}
-
-/* ---------- BOX 2 — Big Stat ---------- */
-
-.box-2 {
-  background: linear-gradient(155deg, #050f1e 0%, #060606 65%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Animated shimmer stripe */
-.shimmer-sweep {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(
-    105deg,
-    transparent 38%,
-    rgba(255, 255, 255, 0.035) 50%,
-    transparent 62%
-  );
-  pointer-events: none;
-  animation: shimmer-sweep 5s ease-in-out infinite 1s;
-}
-
-.stat-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.stat-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #0073CF;
-}
-
-.stat-mega {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 110px;
-  line-height: 1;
-  color: #f5f5f5;
-  background: linear-gradient(160deg, #ffffff 30%, #8ab8d8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.02em;
-}
-
-.stat-plus {
-  font-size: 70px;
-  color: #0073CF;
-  -webkit-text-fill-color: #0073CF;
-}
-
-.stat-divider {
-  width: 36px;
-  height: 1px;
-  background: rgba(0, 115, 207, 0.4);
-}
-
-.stat-sub {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: #555;
-  text-transform: uppercase;
-}
-
-/* ---------- BOX 3 — Services Strip ---------- */
-
-.box-3 {
-  background: #080808;
-  padding: 0;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr 1px 1fr;
-  height: 100%;
-}
-
-.service-sep {
-  background: rgba(255, 255, 255, 0.05);
-  align-self: stretch;
-}
-
-.service-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 28px 26px;
-  transition: background 0.25s;
-  cursor: default;
-}
-
-.service-card:hover {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.service-icon {
-  width: 38px;
-  height: 38px;
-  background: rgba(0, 115, 207, 0.1);
-  border: 1px solid rgba(0, 115, 207, 0.22);
-  border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #0073CF;
-  margin-bottom: 16px;
-  transition: background 0.25s, box-shadow 0.25s;
-}
-
-.service-card:hover .service-icon {
-  background: rgba(0, 115, 207, 0.18);
-  box-shadow: 0 0 16px rgba(0, 115, 207, 0.3);
-}
-
-.service-card h4 {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin: 0 0 10px 0;
-  color: #e8e8e8;
-}
-
-.service-card p {
-  font-size: 13px;
-  line-height: 1.55;
-  color: #666;
-  margin: 0;
-}
-
-/* ---------- BOX 4 — Rating ---------- */
-
-.box-4 {
-  background: linear-gradient(145deg, #060606 0%, #060e08 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rating-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  text-align: center;
-}
-
-.stars {
-  font-size: 18px;
-  letter-spacing: 3px;
-  color: #f5c518;
-  margin-bottom: 4px;
-}
-
-.rating-number {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 72px;
-  line-height: 1;
-  color: #f5f5f5;
-  letter-spacing: 0.02em;
-}
-
-.rating-label {
-  font-size: 10px;
-  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #555;
+  color: #444;
 }
 
-.rating-sources {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  margin-top: 4px;
-}
-
-.rating-sources span {
-  font-size: 11px;
-  font-weight: 600;
-  color: #3a8c50;
+.hero-btn-wa-number {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e0e0e0;
   letter-spacing: 0.04em;
 }
 
-.rating-dot {
-  color: #333 !important;
-}
-
-/* ---------- BOX 5 — WhatsApp Book ---------- */
-
-.box-5 {
-  background: #080808;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.book-headline {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 56px;
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  margin: 0 0 8px 0;
-  color: #f0f0f0;
-}
-
-.book-sub {
-  font-size: 12px;
-  font-weight: 500;
-  color: #555;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin: 0 0 24px 0;
-}
-
-.btn-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  height: 50px;
-  padding: 0 26px;
-  background: #1a8c3a;
-  text-decoration: none;
-  border: none;
-  border-radius: 10px;
-  color: #fff;
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all 0.25s;
-  width: fit-content;
-}
-
-.btn-whatsapp:hover {
-  background: #25a84a;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
-  transform: translateY(-2px);
-}
-
-/* ---------- BOX 6 — Brand Statement ---------- */
-
-.box-6 {
-  background: linear-gradient(135deg, #050505 0%, #07101a 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.brand-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.brand-eyebrow {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #0073CF;
-  margin: 0;
-}
-
-.brand-statement {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: 0.01em;
-  color: #f0f0f0;
-  margin: 0;
-}
-
-.brand-body {
-  font-size: 13px;
-  line-height: 1.65;
-  color: #666;
-  margin: 0;
-  max-width: 460px;
-}
-
-.brand-badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #444;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 6px 14px;
-  border-radius: 6px;
-  width: fit-content;
-}
-
 /* ================================================
-   RESPONSIVE — Tablet (768px – 1099px)
+   RESPONSIVE
    ================================================ */
 
 @media (max-width: 1099px) {
-  .hero-section {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas:
-      "box1 box1"
-      "box2 box4"
-      "box3 box3"
-      "box5 box6";
-    gap: 10px;
-    padding: 14px;
+  .hero {
+    grid-template-columns: 50% 50%;
   }
 
-  .hl-brilla {
-    font-size: 72px;
-  }
-
-  .stat-mega {
-    font-size: 90px;
-  }
-
-  .stat-plus {
-    font-size: 56px;
-  }
-
-  .brand-statement {
-    font-size: 42px;
+  .hero-content {
+    padding: 48px 32px;
   }
 }
 
-/* ================================================
-   RESPONSIVE — Mobile (≤ 767px)
-   ================================================ */
-
 @media (max-width: 767px) {
-  .hero-section {
+  .hero {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "box1"
-      "box3"
-      "box5"
-      "box2"
-      "box4"
-      "box6";
-    gap: 8px;
-    padding: 10px;
+    grid-template-rows: 360px auto;
   }
 
-  /* --- Box 1 mobile --- */
-  .box-1 {
-    padding: 24px 20px;
+  .hero-content {
+    padding: 40px 20px;
+    border-left: none;
+    border-top: 1px solid rgba(255,255,255,0.04);
   }
 
-  .hl-brilla {
-    font-size: 52px;
-  }
+  .ht-brilla { font-size: 52px; }
+  .ht-brand  { font-size: 68px; }
 
-  .hl-con {
-    font-size: 13px;
-    padding-bottom: 8px;
-  }
-
-  .hero-desc {
-    font-size: 14px;
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    flex: 1;
-    min-width: 0;
-    padding: 0 16px;
-    font-size: 12px;
-  }
-
-  .button-group {
-    width: 100%;
-  }
-
-  /* --- Box 2 mobile (stat) --- */
-  .box-2 {
-    padding: 28px 20px;
-  }
-
-  .stat-mega {
-    font-size: 80px;
-  }
-
-  .stat-plus {
-    font-size: 50px;
-  }
-
-  /* --- Box 3 mobile (services — stack vertically) --- */
-  .box-3 {
-    padding: 0;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    height: auto;
-  }
-
-  .service-sep {
-    height: 1px;
-    width: 100%;
-    align-self: auto;
-  }
-
-  .service-card {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 20px;
-    justify-content: flex-start;
-  }
-
-  .service-icon {
-    margin-bottom: 0;
-    flex-shrink: 0;
-  }
-
-  .service-card h4 {
-    margin-bottom: 6px;
-  }
-
-  /* --- Box 4 mobile (rating) --- */
-  .rating-number {
-    font-size: 60px;
-  }
-
-  /* --- Box 5 mobile (book) --- */
-  .book-headline {
-    font-size: 48px;
-  }
-
-  .btn-whatsapp {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* --- Box 6 mobile (brand) --- */
-  .brand-statement {
-    font-size: 38px;
-  }
+  .hero-actions { gap: 16px; }
 }
