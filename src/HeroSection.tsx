@@ -7,8 +7,8 @@ type Lang = 'EN' | 'ES';
 
 const t = {
   eyebrow:  { EN: 'About Us',          ES: 'Sobre Nosotros' },
-  line1:    { EN: 'Brilla',            ES: 'Brilla' },
-  line2:    { EN: 'con',               ES: 'con' },
+  line1:    { EN: 'Shine',             ES: 'Brilla' },
+  line2:    { EN: 'with',             ES: 'con' },
   desc:     {
     EN: "We don't just wash cars — we restore, protect, and elevate your vehicle to showroom condition with obsessive attention to detail.",
     ES: 'No solo lavamos carros — restauramos, protegemos y elevamos tu vehículo a condición de showroom con atención obsesiva al detalle.',
