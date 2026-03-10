@@ -29,7 +29,7 @@ const content = {
 function Footer({ language, theme }: { language: Lang; theme: 'light' | 'dark' }) {
   const l = language;
   const [email, setEmail] = useState('');
-  const logo = theme === 'light' ? blackLogo : whiteLogo;
+  const logo = theme === 'light' ? whiteLogo : blackLogo;
 
   return (
     <footer className="footer">
@@ -42,7 +42,7 @@ function Footer({ language, theme }: { language: Lang; theme: 'light' | 'dark' }
           <p className="footer-tagline">{content.tagline[l]}</p>
           <div className="footer-socials">
             {/* Instagram */}
-            <a href="#" className="footer-social" aria-label="Instagram">
+            <a href="https://www.instagram.com/d.taiilzz?igsh=MXhtbTRqNWZmeW8wcQ%3D%3D" target="_blank" rel="noopener noreferrer" className="footer-social footer-social--instagram" aria-label="Instagram">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
@@ -50,7 +50,7 @@ function Footer({ language, theme }: { language: Lang; theme: 'light' | 'dark' }
               </svg>
             </a>
             {/* Facebook */}
-            <a href="#" className="footer-social" aria-label="Facebook">
+            <a href="https://www.facebook.com/people/DTailz/61581384764512/" target="_blank" rel="noopener noreferrer" className="footer-social footer-social--facebook" aria-label="Facebook">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
               </svg>
@@ -93,7 +93,7 @@ function Footer({ language, theme }: { language: Lang; theme: 'light' | 'dark' }
                   <polyline points="22,6 12,13 2,6"/>
                 </svg>
               </span>
-              hola@dtails.com
+              <a href="mailto:jorged.tailz@gmail.com" style={{color: 'inherit', textDecoration: 'none'}}>jorged.tailz@gmail.com</a>
             </li>
             <li>
               <span className="footer-contact-icon">

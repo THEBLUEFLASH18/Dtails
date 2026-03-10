@@ -43,7 +43,7 @@ function CarMenuIcon({ open }: { open: boolean }) {
 
 function NavBar({ language, setLanguage, theme }: NavBarProps) {
     const [menuOpen, setMenuOpen] = useState(false);
-    const logo = theme === 'light' ? blackLogo : whiteLogo;
+    const logo = theme === 'light' ? whiteLogo : blackLogo;
 
     const nav = {
         about:    { EN: 'About',    ES: 'Nosotros' },

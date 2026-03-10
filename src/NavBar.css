@@ -31,22 +31,21 @@
     flex: 1;
 }
 
-/* Dark mode: white logo fills its canvas, contain works perfectly */
+/* Full logo — bird + D.Tailz text — shown at natural proportions.
+   mix-blend-mode removes the image background so it integrates
+   cleanly into the navbar regardless of theme. */
 img.logo {
-    height: 48px;
+    height: 56px;
+    width: auto;
     object-fit: contain;
     display: block;
 }
 
-/* Light mode: BlackLogo has a large square canvas with the phoenix occupying only
-   the center ~54% vertically. Using object-fit: cover with a wider container
-   forces the browser to zoom in and crop out the surrounding whitespace,
-   making the phoenix appear the same visual size as the white logo. */
 [data-theme="light"] img.logo {
-    height: 48px;
-    width: 82px;
-    object-fit: cover;
-    object-position: 52% 44%;
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* light mode: white bg disappears, dark marks stay */
 }
 
 /* ---- Nav Links ---- */
@@ -306,15 +305,14 @@ img.logo {
     }
 
     img.logo {
-        height: 42px;
+        height: 46px;
         width: auto;
     }
 
     [data-theme="light"] img.logo {
-        height: 42px;
-        width: 72px;
-        object-fit: cover;
-        object-position: 52% 44%;
+        height: 46px;
+        width: auto;
+        object-fit: contain;
     }
 
     .lang-toggle {
