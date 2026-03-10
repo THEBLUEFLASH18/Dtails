@@ -9,9 +9,10 @@
 
 .testi-wrapper {
   width: 100%;
-  background: rgba(7, 7, 7, 0.91);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.3s ease;
 }
 
 .testi-section {
@@ -32,15 +33,17 @@
   font-size: 56px;
   font-weight: 400;
   letter-spacing: 0.02em;
-  color: #f0f0f0;
+  color: var(--text-1);
   margin: 0 0 10px 0;
   line-height: 1;
+  transition: color 0.3s ease;
 }
 
 .testi-sub {
   font-size: 14px;
-  color: #555;
+  color: var(--text-5);
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 /* ---- Grid ---- */
@@ -54,8 +57,8 @@
 /* ---- Card ---- */
 
 .testi-card {
-  background: #080808;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 32px 28px 28px;
   position: relative;
@@ -65,7 +68,7 @@
   gap: 16px;
   opacity: 0;
   animation: testi-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: border-color 0.3s, transform 0.3s;
+  transition: border-color 0.3s, transform 0.3s, background-color 0.3s;
 }
 
 .testi-card:nth-child(1) { animation-delay: 0.05s; }
@@ -73,7 +76,7 @@
 .testi-card:nth-child(3) { animation-delay: 0.25s; }
 
 .testi-card:hover {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--border-hi);
   transform: translateY(-3px);
 }
 
@@ -96,7 +99,7 @@
 .testi-stars {
   font-size: 15px;
   letter-spacing: 3px;
-  color: #0073CF;
+  color: var(--accent);
   line-height: 1;
   position: relative;
   z-index: 1;
@@ -107,11 +110,12 @@
 .testi-quote {
   font-size: 14px;
   line-height: 1.7;
-  color: #c8c8c8;
+  color: var(--text-3);
   margin: 0;
   flex: 1;
   position: relative;
   z-index: 1;
+  transition: color 0.3s ease;
 }
 
 /* ---- Author ---- */
@@ -122,9 +126,10 @@
   gap: 14px;
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--testi-author-border);
   position: relative;
   z-index: 1;
+  transition: border-color 0.3s ease;
 }
 
 .testi-avatar {
@@ -136,10 +141,11 @@
   justify-content: center;
   font-size: 13px;
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--avatar-color);
   letter-spacing: 0.04em;
   flex-shrink: 0;
   border: 1px solid rgba(0, 115, 207, 0.25);
+  transition: color 0.3s ease;
 }
 
 .testi-author-info {
@@ -151,13 +157,14 @@
 .testi-name {
   font-size: 14px;
   font-weight: 700;
-  color: #e8e8e8;
+  color: var(--text-2);
   letter-spacing: 0.02em;
+  transition: color 0.3s ease;
 }
 
 .testi-vehicle {
   font-size: 12px;
-  color: #0073CF;
+  color: var(--accent);
   font-weight: 500;
   letter-spacing: 0.02em;
 }

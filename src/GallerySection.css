@@ -9,10 +9,10 @@
 
 .gallery-wrapper {
   width: 100%;
-  /* Slightly lighter than other sections — lets the dark photo grid pop against it */
-  background: rgba(10, 10, 10, 0.88);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.3s ease;
 }
 
 .gallery-section {
@@ -33,15 +33,17 @@
   font-size: 56px;
   font-weight: 400;
   letter-spacing: 0.02em;
-  color: #f0f0f0;
+  color: var(--text-1);
   margin: 0 0 10px 0;
   line-height: 1;
+  transition: color 0.3s ease;
 }
 
 .gallery-sub {
   font-size: 14px;
-  color: #555;
+  color: var(--text-5);
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 /* ---- Grid ---- */
@@ -59,7 +61,7 @@
   position: relative;
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
   cursor: pointer;
   opacity: 0;
   animation: gallery-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -144,7 +146,7 @@
   left: 0;
   right: 0;
   padding: 40px 18px 16px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+  background: var(--gallery-overlay);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -162,7 +164,7 @@
 .gallery-num {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
-  color: rgba(255, 255, 255, 0.12);
+  color: var(--gallery-num);
   line-height: 1;
   letter-spacing: 0.04em;
 }
@@ -172,7 +174,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--gallery-label);
   background: rgba(0, 115, 207, 0.2);
   border: 1px solid rgba(0, 115, 207, 0.35);
   padding: 4px 12px;
@@ -191,9 +193,9 @@
   align-items: center;
   gap: 8px;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-hi);
   border-radius: 10px;
-  color: #777;
+  color: var(--text-5);
   font-family: 'Outfit', sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -204,9 +206,9 @@
 }
 
 .gallery-cta:hover {
-  color: #f0f0f0;
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--nav-link-hover);
+  border-color: var(--border-hi);
+  background: var(--gallery-cta-hover-bg);
   transform: translateY(-2px);
 }
 

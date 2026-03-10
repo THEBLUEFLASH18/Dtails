@@ -12,7 +12,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.96);
+    background-color: var(--navbar-bg);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     width: 100%;
@@ -20,8 +20,9 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid var(--border);
     padding: 0 32px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .logo-container {
@@ -30,10 +31,22 @@
     flex: 1;
 }
 
+/* Dark mode: white logo fills its canvas, contain works perfectly */
 img.logo {
-    height: 40px;
+    height: 48px;
     object-fit: contain;
-    filter: brightness(1.05);
+    display: block;
+}
+
+/* Light mode: BlackLogo has a large square canvas with the phoenix occupying only
+   the center ~54% vertically. Using object-fit: cover with a wider container
+   forces the browser to zoom in and crop out the surrounding whitespace,
+   making the phoenix appear the same visual size as the white logo. */
+[data-theme="light"] img.logo {
+    height: 48px;
+    width: 82px;
+    object-fit: cover;
+    object-position: 52% 44%;
 }
 
 /* ---- Nav Links ---- */
@@ -45,7 +58,7 @@ img.logo {
 }
 
 .nav-link {
-    color: #555555;
+    color: var(--nav-link);
     text-decoration: none;
     font-size: 11px;
     font-weight: 600;
@@ -64,15 +77,15 @@ img.logo {
     left: 18px;
     right: 18px;
     height: 1px;
-    background: #0073CF;
-    box-shadow: 0 0 6px rgba(0, 115, 207, 0.8);
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent-glow);
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-link:hover {
-    color: #ffffff;
+    color: var(--nav-link-hover);
 }
 
 .nav-link:hover::after {
@@ -94,7 +107,7 @@ img.logo {
     content: '';
     width: 1px;
     height: 20px;
-    background: rgba(255, 255, 255, 0.07);
+    background: var(--border-sep);
     margin-right: 6px;
     flex-shrink: 0;
 }
@@ -103,8 +116,8 @@ img.logo {
 
 .lang-toggle {
     background: transparent;
-    color: #444444;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--lang-toggle);
+    border: 1px solid var(--lang-toggle-border);
     padding: 6px 12px;
     font-size: 10px;
     font-weight: 700;
@@ -124,14 +137,14 @@ img.logo {
     left: 8px;
     width: 18px;
     height: 1px;
-    background: #0073CF;
+    background: var(--accent);
     box-shadow: 0 0 6px rgba(0, 115, 207, 0.7);
     opacity: 0;
     transition: opacity 0.22s;
 }
 
 .lang-toggle:hover {
-    color: #e0e0e0;
+    color: var(--lang-toggle-hover);
     border-color: rgba(0, 115, 207, 0.4);
     background: rgba(0, 115, 207, 0.05);
 }
@@ -179,7 +192,7 @@ img.logo {
     background: rgba(0, 115, 207, 0.08);
     border: 1px solid rgba(0, 115, 207, 0.3);
     border-radius: 10px;
-    color: #0073CF;
+    color: var(--accent);
     padding: 6px 10px;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
@@ -199,7 +212,7 @@ img.logo {
     top: 60px;
     z-index: 99;
     width: 100%;
-    background: rgba(0, 0, 0, 0.98);
+    background: var(--mobile-menu-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0, 115, 207, 0.15);
@@ -219,14 +232,14 @@ img.logo {
 }
 
 .nav-mobile-link {
-    color: #6a6a6a;
+    color: var(--mobile-link);
     text-decoration: none;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 18px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid var(--mobile-link-border);
     transition: color 0.2s, background 0.2s, padding-left 0.25s;
     position: relative;
 }
@@ -238,15 +251,15 @@ img.logo {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: #0073CF;
+    background: var(--accent);
     box-shadow: 0 0 8px rgba(0, 115, 207, 0.6);
     transform: scaleY(0);
     transition: transform 0.2s;
 }
 
 .nav-mobile-link:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.02);
+    color: var(--mobile-link-hover);
+    background: var(--mobile-link-hover-bg);
     padding-left: 28px;
 }
 
@@ -293,7 +306,15 @@ img.logo {
     }
 
     img.logo {
-        height: 34px;
+        height: 42px;
+        width: auto;
+    }
+
+    [data-theme="light"] img.logo {
+        height: 42px;
+        width: 72px;
+        object-fit: cover;
+        object-position: 52% 44%;
     }
 
     .lang-toggle {

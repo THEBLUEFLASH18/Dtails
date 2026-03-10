@@ -18,10 +18,30 @@ const locationNotice = {
   cta: { EN: 'I Understand', ES: 'Entendido' },
 }
 
+function getTheme(): 'light' | 'dark' {
+  const h = new Date().getHours()
+  const start: number = (window as any).__THEME_START__ ?? 6
+  const end: number   = (window as any).__THEME_END__   ?? 18
+  return h >= start && h < end ? 'light' : 'dark'
+}
+
 function App() {
   const [language, setLanguage] = useState<'EN' | 'ES'>('ES')
   const [showNotice, setShowNotice] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>(getTheme)
   const l = language
+
+  // Apply theme to <html> and keep it in sync every 30 s so time changes are detected
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTheme(getTheme())
+    }, 30_000)
+    return () => clearInterval(id)
+  }, [])
 
   useEffect(() => {
     const dismissed = sessionStorage.getItem('location-notice-dismissed')
@@ -79,14 +99,14 @@ function App() {
           </div>
         </div>
       )}
-      <NavBar language={language} setLanguage={setLanguage} />
+      <NavBar language={language} setLanguage={setLanguage} theme={theme} />
       <HeroSection language={language} />
       <ServicesSection language={language} />
       <HowItWorks language={language} />
       <GallerySection language={language} />
       <TestimonialsSection language={language} />
       <FAQSection language={language} />
-      <Footer language={language} />
+      <Footer language={language} theme={theme} />
     </>
   )
 }

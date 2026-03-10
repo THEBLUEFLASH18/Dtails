@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import logo from './assets/White-Logo-nav.webp';
+import whiteLogo from './assets/White-Logo-nav.webp';
+import blackLogo from './assets/BlackLogo.webp';
 import './NavBar.css';
 
 type Lang = 'EN' | 'ES';
@@ -7,6 +8,7 @@ type Lang = 'EN' | 'ES';
 interface NavBarProps {
     language: Lang;
     setLanguage: (lang: Lang) => void;
+    theme: 'light' | 'dark';
 }
 
 function CarMenuIcon({ open }: { open: boolean }) {
@@ -39,8 +41,9 @@ function CarMenuIcon({ open }: { open: boolean }) {
     );
 }
 
-function NavBar({ language, setLanguage }: NavBarProps) {
+function NavBar({ language, setLanguage, theme }: NavBarProps) {
     const [menuOpen, setMenuOpen] = useState(false);
+    const logo = theme === 'light' ? blackLogo : whiteLogo;
 
     const nav = {
         about:    { EN: 'About',    ES: 'Nosotros' },

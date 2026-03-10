@@ -4,8 +4,9 @@
 
 .footer {
   width: 100%;
-  background: #000000;
+  background: var(--footer-bg);
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 /* Top gradient rule — fades from blue to transparent */
@@ -34,25 +35,27 @@
 /* ---- Brand col ---- */
 
 .footer-logo {
-  height: 36px;
+  height: 44px;
   object-fit: contain;
   margin-bottom: 16px;
   display: block;
-  filter: brightness(0.85);
-  transition: filter 0.25s;
 }
 
-.footer-logo:hover {
-  filter: brightness(1);
+[data-theme="light"] .footer-logo {
+  height: 44px;
+  width: 80px;
+  object-fit: cover;
+  object-position: 52% 44%;
 }
 
 .footer-tagline {
   font-size: 13px;
   line-height: 1.7;
-  color: #555;
+  color: var(--text-5);
   margin: 0 0 24px 0;
   max-width: 280px;
   white-space: pre-line;
+  transition: color 0.3s ease;
 }
 
 .footer-socials {
@@ -64,12 +67,12 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--social-bg);
+  border: 1px solid var(--social-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #555;
+  color: var(--text-5);
   text-decoration: none;
   transition: all 0.25s;
 }
@@ -77,7 +80,7 @@
 .footer-social:hover {
   background: rgba(0, 115, 207, 0.12);
   border-color: rgba(0, 115, 207, 0.35);
-  color: #0073CF;
+  color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -93,8 +96,9 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #e0e0e0;
+  color: var(--text-2);
   margin: 0 0 20px 0;
+  transition: color 0.3s ease;
 }
 
 /* ---- Service links ---- */
@@ -110,14 +114,14 @@
 
 .footer-link {
   font-size: 13px;
-  color: #555;
+  color: var(--text-5);
   text-decoration: none;
   letter-spacing: 0.02em;
   transition: color 0.2s;
 }
 
 .footer-link:hover {
-  color: #f0f0f0;
+  color: var(--footer-link-hover);
 }
 
 /* ---- Contact list ---- */
@@ -136,8 +140,9 @@
   align-items: center;
   gap: 10px;
   font-size: 13px;
-  color: #555;
+  color: var(--text-5);
   letter-spacing: 0.02em;
+  transition: color 0.3s ease;
 }
 
 .footer-contact-icon {
@@ -149,7 +154,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0073CF;
+  color: var(--accent);
   flex-shrink: 0;
 }
 
@@ -157,9 +162,10 @@
 
 .footer-subscribe-sub {
   font-size: 13px;
-  color: #555;
+  color: var(--text-5);
   margin: 0 0 16px 0;
   line-height: 1.6;
+  transition: color 0.3s ease;
 }
 
 .footer-subscribe-form {
@@ -171,18 +177,18 @@
 .footer-email-input {
   height: 42px;
   padding: 0 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: 10px;
-  color: #e0e0e0;
+  color: var(--input-color);
   font-family: 'Outfit', sans-serif;
   font-size: 13px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background-color 0.3s, color 0.3s;
 }
 
 .footer-email-input::placeholder {
-  color: #3a3a3a;
+  color: var(--input-placeholder);
 }
 
 .footer-email-input:focus {
@@ -191,7 +197,7 @@
 
 .footer-subscribe-btn {
   height: 42px;
-  background: #0073CF;
+  background: var(--accent);
   border: none;
   border-radius: 10px;
   color: #fff;
@@ -216,17 +222,19 @@
   max-width: 1140px;
   margin: 0 auto;
   padding: 20px 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid var(--footer-bottom-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  transition: border-color 0.3s ease;
 }
 
 .footer-copy {
   font-size: 12px;
-  color: #3a3a3a;
+  color: var(--footer-copy);
   letter-spacing: 0.02em;
+  transition: color 0.3s ease;
 }
 
 .footer-legal {
@@ -236,14 +244,14 @@
 
 .footer-legal-link {
   font-size: 12px;
-  color: #3a3a3a;
+  color: var(--footer-copy);
   text-decoration: none;
   letter-spacing: 0.02em;
   transition: color 0.2s;
 }
 
 .footer-legal-link:hover {
-  color: #aaa;
+  color: var(--footer-link-hover);
 }
 
 /* ================================================

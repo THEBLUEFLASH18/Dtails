@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import logo from './assets/White-Logo-nav.webp';
+import whiteLogo from './assets/White-Logo-nav.webp';
+import blackLogo from './assets/BlackLogo.webp';
 import './Footer.css';
 
 type Lang = 'EN' | 'ES';
@@ -25,9 +26,10 @@ const content = {
   copy:       { EN: '© 2025 Dtailz. All rights reserved.', ES: '© 2025 Dtailz. Todos los derechos reservados.' },
 };
 
-function Footer({ language }: { language: Lang }) {
+function Footer({ language, theme }: { language: Lang; theme: 'light' | 'dark' }) {
   const l = language;
   const [email, setEmail] = useState('');
+  const logo = theme === 'light' ? blackLogo : whiteLogo;
 
   return (
     <footer className="footer">
