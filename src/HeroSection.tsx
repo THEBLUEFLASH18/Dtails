@@ -57,7 +57,7 @@ function HeroSection({ language }: { language: Lang }) {
   }, [dragging]);
 
   return (
-    <section className="hero">
+    <section className="hero" id="about">
 
       {/* ── LEFT: Before / After Slider ── */}
       <div

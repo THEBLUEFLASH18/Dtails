@@ -1,4 +1,9 @@
 import './GallerySection.css';
+import paintCorrection from './assets/gallery-paint-correction.webp';
+import ceramicCoating from './assets/gallery-ceramic-coating.webp';
+import fullDetail from './assets/gallery-full-detail.webp';
+import interior from './assets/gallery-interior.webp';
+import engineBay from './assets/gallery-engine-bay.webp';
 
 type Lang = 'EN' | 'ES';
 
@@ -7,18 +12,13 @@ const content = {
   sub:    { EN: 'See the difference precision makes',    ES: 'Descubre la diferencia que hace la precisión' },
   cta:    { EN: 'See More on Instagram',                 ES: 'Ver Más en Instagram' },
   photos: [
-    { label: { EN: 'Paint Correction',     ES: 'Corrección de Pintura' },     size: 'tall'   },
-    { label: { EN: 'Ceramic Coating',      ES: 'Recubrimiento Cerámico' },    size: 'normal' },
-    { label: { EN: 'Full Detail',          ES: 'Detallado Completo' },         size: 'normal' },
-    { label: { EN: 'Interior Restoration', ES: 'Restauración Interior' },      size: 'wide'   },
-    { label: { EN: 'Engine Bay',           ES: 'Motor Detallado' },            size: 'normal' },
+    { label: { EN: 'Paint Correction',     ES: 'Corrección de Pintura' },     img: paintCorrection, size: 'tall'   },
+    { label: { EN: 'Ceramic Coating',      ES: 'Recubrimiento Cerámico' },    img: ceramicCoating,  size: 'normal' },
+    { label: { EN: 'Full Detail',          ES: 'Detallado Completo' },         img: fullDetail,      size: 'normal' },
+    { label: { EN: 'Interior Restoration', ES: 'Restauración Interior' },      img: interior,        size: 'normal' },
+    { label: { EN: 'Engine Bay',           ES: 'Motor Detallado' },            img: engineBay,       size: 'normal' },
   ],
 };
-
-/* Replace the CSS background-image values in GallerySection.css
-   with your own photo URLs — e.g.:
-   .gallery-photo:nth-child(1) { background-image: url('/src/assets/work-1.jpg'); }
-*/
 
 function GallerySection({ language }: { language: Lang }) {
   const l = language;
@@ -32,7 +32,13 @@ function GallerySection({ language }: { language: Lang }) {
 
       <div className="gallery-grid">
         {content.photos.map((photo, i) => (
-          <div key={i} className={`gallery-photo gallery-photo--${photo.size} gallery-photo--${i + 1}`}>
+          <div
+            key={i}
+            className={`gallery-photo gallery-photo--${photo.size} gallery-photo--${i + 1}`}
+            style={{ backgroundImage: `url(${photo.img})` }}
+            role="img"
+            aria-label={photo.label[l]}
+          >
             <div className="gallery-corner gallery-corner--tl"></div>
             <div className="gallery-corner gallery-corner--br"></div>
             <div className="gallery-overlay">

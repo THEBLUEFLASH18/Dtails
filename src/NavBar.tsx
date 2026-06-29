@@ -62,9 +62,9 @@ function NavBar({ language, setLanguage, theme }: NavBarProps) {
 
             {/* Desktop links */}
             <div className="nav-links">
-                <a href="#" className="nav-link">{nav.about[language]}</a>
+                <a href="#about" className="nav-link">{nav.about[language]}</a>
                 <a href="#services" className="nav-link">{nav.services[language]}</a>
-                <a href="#" className="nav-link">{nav.contact[language]}</a>
+                <a href="#contact" className="nav-link">{nav.contact[language]}</a>
             </div>
 
             {/* Desktop actions */}
@@ -109,9 +109,9 @@ function NavBar({ language, setLanguage, theme }: NavBarProps) {
 
         {/* Mobile dropdown */}
         <div className={`nav-mobile-menu${menuOpen ? ' nav-mobile-menu--open' : ''}`}>
-            <a href="#" className="nav-mobile-link" onClick={closeMenu}>{nav.about[language]}</a>
+            <a href="#about" className="nav-mobile-link" onClick={closeMenu}>{nav.about[language]}</a>
             <a href="#services" className="nav-mobile-link" onClick={closeMenu}>{nav.services[language]}</a>
-            <a href="#" className="nav-mobile-link" onClick={closeMenu}>{nav.contact[language]}</a>
+            <a href="#contact" className="nav-mobile-link" onClick={closeMenu}>{nav.contact[language]}</a>
             <a
                 href="https://wa.me/50497974295"
                 target="_blank"

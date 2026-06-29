@@ -13,7 +13,7 @@ const content = {
     },
     {
       q: { EN: 'Do you come to my location?',               ES: '¿Vienen a mi ubicación?' },
-      a: { EN: 'Yes. We operate mobile across Panama City. Just provide a flat, shaded area and we handle the rest — no water or electricity hookup needed from your side.', ES: 'Sí. Operamos de forma móvil en toda la Ciudad de Panamá. Solo necesitamos un área plana y con sombra — no necesitas suministrar agua ni electricidad.' },
+      a: { EN: 'Yes. We operate mobile across San Pedro Sula and surrounding areas (subject to confirmation). Just provide a flat, shaded area and we handle the rest — no water or electricity hookup needed from your side.', ES: 'Sí. Operamos de forma móvil en San Pedro Sula y zonas cercanas (sujeto a confirmación). Solo necesitamos un área plana y con sombra — no necesitas suministrar agua ni electricidad.' },
     },
     {
       q: { EN: 'What products do you use?',                 ES: '¿Qué productos utilizan?' },
@@ -25,7 +25,7 @@ const content = {
     },
     {
       q: { EN: 'Do you require a deposit?',                 ES: '¿Requieren depósito?' },
-      a: { EN: 'Yes, a 30% deposit is required to confirm your booking. The remainder is due on the day of service. We accept Yappy, bank transfer, and cash.', ES: 'Sí, se requiere un depósito del 30% para confirmar tu cita. El resto se paga el día del servicio. Aceptamos Yappy, transferencia bancaria y efectivo.' },
+      a: { EN: 'Yes, a 30% deposit is required to confirm your booking. The remainder is due on the day of service. We accept bank transfer and cash.', ES: 'Sí, se requiere un depósito del 30% para confirmar tu cita. El resto se paga el día del servicio. Aceptamos transferencia bancaria y efectivo.' },
     },
     {
       q: { EN: 'What if it rains?',                         ES: '¿Qué pasa si llueve?' },

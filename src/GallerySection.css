@@ -51,7 +51,7 @@
 .gallery-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 280px 200px;
+  grid-auto-rows: 232px;
   gap: 10px;
 }
 
@@ -66,6 +66,7 @@
   opacity: 0;
   animation: gallery-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition: border-color 0.3s, transform 0.3s;
+  background-color: #0a0a0f;
   background-size: cover;
   background-position: center;
 }
@@ -81,42 +82,8 @@
 .gallery-photo:nth-child(4) { animation-delay: 0.26s; }
 .gallery-photo:nth-child(5) { animation-delay: 0.33s; }
 
-/* Grid placement */
+/* Grid placement — only the first cell is tall, giving a gapless 2×3 masonry */
 .gallery-photo--tall   { grid-row: span 2; }
-.gallery-photo--wide   { grid-column: span 2; }
-
-/* ---- Placeholder gradients (replace with background-image for real photos) ---- */
-
-.gallery-photo--1 {
-  background-color: #0a0a14;
-  background-image:
-    radial-gradient(ellipse 60% 50% at 60% 55%, rgba(0, 115, 207, 0.12) 0%, transparent 70%),
-    linear-gradient(160deg, #0d0d1a 0%, #090912 60%, #050508 100%);
-}
-.gallery-photo--2 {
-  background-color: #0c0c0c;
-  background-image:
-    radial-gradient(ellipse 70% 60% at 40% 50%, rgba(0, 115, 207, 0.09) 0%, transparent 70%),
-    linear-gradient(145deg, #111118 0%, #0a0a0a 100%);
-}
-.gallery-photo--3 {
-  background-color: #0a0f0a;
-  background-image:
-    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(30, 80, 40, 0.15) 0%, transparent 70%),
-    linear-gradient(135deg, #0c130c 0%, #080a08 100%);
-}
-.gallery-photo--4 {
-  background-color: #0a0a10;
-  background-image:
-    radial-gradient(ellipse 80% 40% at 50% 60%, rgba(0, 80, 160, 0.14) 0%, transparent 70%),
-    linear-gradient(135deg, #0d0d18 0%, #080808 100%);
-}
-.gallery-photo--5 {
-  background-color: #0c0c0c;
-  background-image:
-    radial-gradient(ellipse 60% 60% at 50% 40%, rgba(0, 115, 207, 0.1) 0%, transparent 70%),
-    linear-gradient(145deg, #101010 0%, #0a0a0a 100%);
-}
 
 /* ---- Corner marks (precision viewfinder) ---- */
 

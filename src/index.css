@@ -158,6 +158,21 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset anchored sections so the sticky 72px navbar doesn't cover them */
+#about,
+#services,
+#contact {
+  scroll-margin-top: 88px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 body {
   background-color: var(--bg);
   padding: 0;

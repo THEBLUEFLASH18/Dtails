@@ -32,7 +32,7 @@ function Footer({ language, theme }: { language: Lang; theme: 'light' | 'dark' }
   const logo = theme === 'light' ? whiteLogo : blackLogo;
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="contact">
       <div className="footer-top-rule"></div>
 
       <div className="footer-body">
